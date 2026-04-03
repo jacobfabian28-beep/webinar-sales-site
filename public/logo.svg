@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 60" fill="none">
+  <!-- Signal wave icon -->
+  <circle cx="30" cy="30" r="28" fill="#f97316"/>
+  <!-- Signal bars -->
+  <rect x="16" y="36" width="5" height="8" rx="2" fill="white"/>
+  <rect x="24" y="29" width="5" height="15" rx="2" fill="white"/>
+  <rect x="32" y="21" width="5" height="23" rx="2" fill="white"/>
+  <!-- Arrow pointing right (sales/conversion) -->
+  <path d="M41 30 L47 24 L47 27 L55 27 L55 33 L47 33 L47 36 Z" fill="white"/>
+
+  <!-- Wordmark -->
+  <text x="70" y="22" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#0f172a">Signal</text>
+  <text x="70" y="22" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#f97316" dx="58">2</text>
+  <text x="70" y="22" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#0f172a" dx="68">Sales</text>
+  <text x="70" y="40" font-family="Arial, sans-serif" font-weight="400" font-size="10" fill="#64748b" letter-spacing="2">AI WEBINAR COACHING</text>
+</svg>
