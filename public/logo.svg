@@ -1,16 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 60" fill="none">
-  <!-- Signal wave icon -->
-  <circle cx="30" cy="30" r="28" fill="#f97316"/>
-  <!-- Signal bars -->
-  <rect x="16" y="36" width="5" height="8" rx="2" fill="white"/>
-  <rect x="24" y="29" width="5" height="15" rx="2" fill="white"/>
-  <rect x="32" y="21" width="5" height="23" rx="2" fill="white"/>
-  <!-- Arrow pointing right (sales/conversion) -->
-  <path d="M41 30 L47 24 L47 27 L55 27 L55 33 L47 33 L47 36 Z" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 52" fill="none">
+  <!-- Icon: upward trending line through a circle -->
+  <circle cx="26" cy="26" r="24" fill="#f97316"/>
+
+  <!-- Funnel shape (webinar → sales) -->
+  <path d="M13 16 L39 16 L31 26 L31 38 L21 38 L21 26 Z" fill="white" opacity="0.2"/>
+  <path d="M13 16 L39 16 L31 26 L31 38 L21 38 L21 26 Z" stroke="white" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+
+  <!-- Signal arc top-left -->
+  <path d="M10 13 Q26 4 42 13" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
 
   <!-- Wordmark -->
-  <text x="70" y="22" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#0f172a">Signal</text>
-  <text x="70" y="22" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#f97316" dx="58">2</text>
-  <text x="70" y="22" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#0f172a" dx="68">Sales</text>
-  <text x="70" y="40" font-family="Arial, sans-serif" font-weight="400" font-size="10" fill="#64748b" letter-spacing="2">AI WEBINAR COACHING</text>
+  <!-- "Signal" -->
+  <text x="62" y="32" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="22" fill="#0f172a" letter-spacing="-0.5">Signal</text>
+  <!-- "2" in orange -->
+  <text x="134" y="32" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="22" fill="#f97316">2</text>
+  <!-- "Sales" -->
+  <text x="149" y="32" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="22" fill="#0f172a" letter-spacing="-0.5">Sales</text>
+
+  <!-- Thin orange underline accent beneath wordmark -->
+  <rect x="62" y="37" width="157" height="2.5" rx="1.25" fill="#f97316" opacity="0.35"/>
 </svg>

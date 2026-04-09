@@ -11,65 +11,85 @@ export default function ContactPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitted(true);
   }
 
   return (
     <>
-      {/* Header */}
-      <section className="bg-gradient-to-br from-slate-900 to-orange-950 text-white py-20 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl font-extrabold mb-4">Let&apos;s Talk</h1>
-          <p className="text-slate-300 text-lg">
-            Book a free 30-minute strategy call or send a message. I read every email.
+      {/* Header — orange */}
+      <section className="bg-orange-500 text-white py-24 px-6">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-orange-100 text-sm font-semibold uppercase tracking-widest mb-3">
+            Contact
+          </p>
+          <h1 className="text-5xl font-bold mb-5 leading-tight">
+            Let&apos;s Talk
+          </h1>
+          <p className="text-orange-100 text-lg max-w-lg leading-relaxed">
+            Book a free 30-minute strategy call or send a message. I read every
+            email personally.
           </p>
         </div>
       </section>
 
+      {/* Contact info + photo — white */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-start">
-          {/* Contact info */}
           <div>
-            <h2 className="text-2xl font-extrabold text-slate-900 mb-6">
-              How to Reach Me
+            <h2 className="text-xl font-bold text-slate-900 mb-8">
+              How to reach me
             </h2>
-            <div className="space-y-6">
-              {[
-                {
-                  icon: "📧",
-                  label: "Email",
-                  value: "jacob@signal2sales.com",
-                },
-                {
-                  icon: "📅",
-                  label: "Book a Call",
-                  value: "Use the form to request a time →",
-                },
-                {
-                  icon: "⏱️",
-                  label: "Response Time",
-                  value: "Within 24 hours on business days",
-                },
-              ].map(({ icon, label, value }) => (
-                <div key={label} className="flex items-start gap-4">
-                  <span className="text-2xl">{icon}</span>
-                  <div>
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{label}</p>
-                    <p className="text-slate-700 font-medium">{value}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="space-y-7">
+              <div>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  Email
+                </p>
+                <a
+                  href="mailto:jacobfabian28@icloud.com"
+                  className="text-slate-800 font-medium text-sm hover:text-orange-500 transition-colors"
+                >
+                  jacobfabian28@icloud.com
+                </a>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  LinkedIn
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/jacob-fabian-141389abcd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-800 font-medium text-sm hover:text-orange-500 transition-colors"
+                >
+                  jacob-fabian-141389abcd
+                </a>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  Book a Call
+                </p>
+                <p className="text-slate-800 font-medium text-sm">
+                  Use the form below to request a time
+                </p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  Response Time
+                </p>
+                <p className="text-slate-800 font-medium text-sm">
+                  Within 24 hours on business days
+                </p>
+              </div>
             </div>
 
-            {/* Photo 4 */}
-            <div className="mt-10 rounded-2xl overflow-hidden aspect-[4/3] relative">
+            <div className="mt-12 rounded-2xl overflow-hidden aspect-[4/3] relative shadow-sm">
               <Image
                 src="/photos/photo2.jpg"
-                alt="Jacob Fabian - Signal2Sales"
+                alt="Jacob Fabian"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-top"
               />
             </div>
           </div>
@@ -77,23 +97,25 @@ export default function ContactPage() {
           {/* Contact form */}
           <div>
             {submitted ? (
-              <div className="bg-orange-50 border border-orange-200 rounded-2xl p-10 text-center">
-                <div className="text-5xl mb-4">✅</div>
-                <h3 className="text-xl font-bold text-orange-800 mb-2">Message Received!</h3>
-                <p className="text-orange-700">
-                  Thanks <strong>{form.name}</strong>! I&apos;ll get back to you at{" "}
-                  <strong>{form.email}</strong> within 24 hours.
+              <div className="border border-orange-200 bg-orange-50 rounded-xl p-10">
+                <h3 className="text-lg font-bold text-orange-800 mb-2">
+                  Message received.
+                </h3>
+                <p className="text-orange-700 text-sm leading-relaxed">
+                  Thanks <strong>{form.name}</strong> — I&apos;ll get back to
+                  you at <strong>{form.email}</strong> within 24 hours.
                 </p>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="bg-slate-50 rounded-2xl p-8 border border-slate-200 space-y-5"
-              >
-                <h3 className="text-lg font-bold text-slate-900">Send a Message</h3>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <h3 className="text-lg font-bold text-slate-900 mb-6">
+                  Send a Message
+                </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">Full Name *</label>
+                    <label className="block text-xs font-semibold text-slate-500 mb-1.5">
+                      Full Name *
+                    </label>
                     <input
                       type="text"
                       name="name"
@@ -104,7 +126,9 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">Email *</label>
+                    <label className="block text-xs font-semibold text-slate-500 mb-1.5">
+                      Email *
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -116,7 +140,9 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-500 mb-1">Business / Website</label>
+                  <label className="block text-xs font-semibold text-slate-500 mb-1.5">
+                    Business / Website
+                  </label>
                   <input
                     type="text"
                     name="business"
@@ -126,7 +152,9 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-500 mb-1">What can I help you with? *</label>
+                  <label className="block text-xs font-semibold text-slate-500 mb-1.5">
+                    What can I help you with? *
+                  </label>
                   <textarea
                     name="message"
                     required
@@ -144,6 +172,34 @@ export default function ContactPage() {
                 </button>
               </form>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom strip — dark slate */}
+      <section className="bg-slate-900 py-16 px-6 text-white" style={{backgroundImage:"url('/tech-bg.svg')",backgroundSize:"cover",backgroundPosition:"center"}}>
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <p className="text-lg font-bold mb-1">Jacob Fabian · Signal2Sales</p>
+            <p className="text-slate-400 text-sm">
+              Helping entrepreneurs turn webinars into their best sales channel.
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 text-sm">
+            <a
+              href="mailto:jacobfabian28@icloud.com"
+              className="text-slate-300 hover:text-orange-400 transition-colors"
+            >
+              jacobfabian28@icloud.com
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jacob-fabian-141389abcd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 hover:text-orange-400 transition-colors"
+            >
+              LinkedIn →
+            </a>
           </div>
         </div>
       </section>

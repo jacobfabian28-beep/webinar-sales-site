@@ -1,14 +1,26 @@
 import Link from "next/link";
 import Image from "next/image";
 
+// ─── UPDATE THIS when you upload your new Kaltura video ───────────────────────
+// 1. Upload your video to Kaltura
+// 2. Copy the entry ID from the video URL (looks like "1_xxxxxxxx")
+// 3. Paste it here and save
+const KALTURA_ENTRY_ID = "1_78xnxrw1";
+// ─────────────────────────────────────────────────────────────────────────────
+
 export default function AboutPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-gradient-to-br from-slate-900 to-orange-950 text-white py-20 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl font-extrabold mb-4">About Jacob Fabian</h1>
-          <p className="text-slate-300 text-lg">
+      <section className="bg-slate-900 text-white py-24 px-6" style={{backgroundImage:"url('/tech-bg.svg')",backgroundSize:"cover",backgroundPosition:"center"}}>
+        <div className="max-w-3xl mx-auto">
+          <p className="text-orange-400 text-sm font-semibold uppercase tracking-widest mb-3">
+            About
+          </p>
+          <h1 className="text-5xl font-bold mb-5 leading-tight">
+            Jacob Fabian
+          </h1>
+          <p className="text-slate-400 text-lg max-w-xl">
             Webinar sales coach, AI enthusiast, and founder of Signal2Sales.
           </p>
         </div>
@@ -16,17 +28,17 @@ export default function AboutPage() {
 
       {/* Pitch video */}
       <section className="py-20 px-6 bg-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-extrabold text-slate-900 mb-4">
-            Hear It From Me — 30-Second Intro
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold text-slate-900 mb-2">
+            30-Second Intro
           </h2>
-          <p className="text-slate-500 mb-8">
+          <p className="text-slate-500 mb-8 text-base">
             Watch this quick video to learn who I am, what I do, and how
             Signal2Sales can help your business grow.
           </p>
-          <div className="rounded-2xl overflow-hidden shadow-xl aspect-video bg-slate-100">
+          <div className="rounded-xl overflow-hidden shadow-lg aspect-video bg-slate-100">
             <iframe
-              src="https://psu.mediaspace.kaltura.com/embed/secure/iframe/entryId/1_idm9ldvr"
+              src={`https://cdnapisec.kaltura.com/p/2356971/embedPlaykitJs/uiconf_id/56368382/entry_id/${KALTURA_ENTRY_ID}?iframeembed=true`}
               className="w-full h-full"
               allowFullScreen
               allow="autoplay"
@@ -37,13 +49,13 @@ export default function AboutPage() {
       </section>
 
       {/* Bio + photos */}
-      <section className="py-20 px-6 bg-slate-50">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-6">
+      <section className="py-20 px-6 bg-stone-50">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+          <div className="pt-2">
+            <h2 className="text-3xl font-bold text-slate-900 mb-6 leading-snug">
               My Story
             </h2>
-            <div className="space-y-4 text-slate-600 leading-relaxed">
+            <div className="space-y-5 text-slate-600 leading-relaxed text-[15px]">
               <p>
                 I started Signal2Sales after watching talented entrepreneurs
                 consistently fail to communicate the value of their offers —
@@ -62,10 +74,10 @@ export default function AboutPage() {
                 tools to build systems that run while they sleep.
               </p>
             </div>
-            <div className="mt-8 flex gap-4">
+            <div className="mt-10">
               <Link
                 href="/how-it-works"
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors text-sm"
               >
                 See How It Works →
               </Link>
@@ -73,8 +85,8 @@ export default function AboutPage() {
           </div>
 
           {/* Photos grid */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-2xl overflow-hidden aspect-square relative">
+          <div className="grid grid-cols-2 gap-3">
+            <div className="rounded-2xl overflow-hidden aspect-square relative shadow-sm">
               <Image
                 src="/photos/photo1.jpg"
                 alt="Jacob Fabian"
@@ -82,10 +94,10 @@ export default function AboutPage() {
                 className="object-cover object-top"
               />
             </div>
-            <div className="rounded-2xl overflow-hidden aspect-square relative">
+            <div className="rounded-2xl overflow-hidden aspect-square relative shadow-sm">
               <Image
-                src="/photos/photo4.jpg"
-                alt="Jacob Fabian"
+                src="/photos/download.png"
+                alt="Signal2Sales platform"
                 fill
                 className="object-cover object-center"
               />
@@ -94,36 +106,43 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-20 px-6 bg-white">
+      {/* Philosophy */}
+      <section className="py-20 px-6 bg-white border-t border-slate-100">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-slate-900 text-center mb-12">
-            My Coaching Philosophy
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="max-w-lg mb-14">
+            <h2 className="text-3xl font-bold text-slate-900 mb-3 leading-snug">
+              How I Think About Coaching
+            </h2>
+            <p className="text-slate-500 text-[15px] leading-relaxed">
+              Not a course, not a community. Just direct frameworks that get
+              businesses selling faster.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-px bg-slate-200 rounded-xl overflow-hidden">
             {[
               {
-                icon: "🎯",
+                number: "01",
                 title: "Results Over Theory",
-                desc: "Every strategy I teach has been tested on real businesses with real money on the line.",
+                desc: "Every strategy I teach has been tested on real businesses with real money on the line. No fluff, no filler.",
               },
               {
-                icon: "🤝",
+                number: "02",
                 title: "You Keep the Wheel",
-                desc: "I give you frameworks and tools, but you run your business. No dependency, no lock-in.",
+                desc: "I hand you frameworks and tools — you run your business. No dependency, no lock-in, ever.",
               },
               {
-                icon: "⚡",
+                number: "03",
                 title: "Speed Matters",
-                desc: "AI lets us move faster than ever. You should be able to launch a webinar in days, not months.",
+                desc: "With the right AI setup you should be able to go from idea to live webinar in days, not months.",
               },
-            ].map(({ icon, title, desc }) => (
-              <div
-                key={title}
-                className="bg-slate-50 rounded-2xl p-8 border border-slate-100 text-center"
-              >
-                <div className="text-4xl mb-4">{icon}</div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{title}</h3>
+            ].map(({ number, title, desc }) => (
+              <div key={title} className="bg-white p-8">
+                <p className="text-orange-500 font-mono text-xs font-bold tracking-widest mb-5">
+                  {number}
+                </p>
+                <h3 className="text-[15px] font-semibold text-slate-900 mb-3">
+                  {title}
+                </h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
