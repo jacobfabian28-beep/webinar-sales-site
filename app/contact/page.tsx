@@ -2,17 +2,34 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { supabase } from "@/lib/supabase";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", business: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    const { error: sbError } = await supabase
+      .from("contact_submissions")
+      .insert([{
+        name: form.name.trim(),
+        email: form.email.trim(),
+        business: form.business.trim(),
+        message: form.message.trim(),
+      }]);
+
+    if (sbError) {
+      setError("Something went wrong. Please try again.");
+      return;
+    }
+
     setSubmitted(true);
   }
 
@@ -164,6 +181,7 @@ export default function ContactPage() {
                     className="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-orange-400 resize-none bg-white"
                   />
                 </div>
+                {error && <p className="text-red-500 text-xs">{error}</p>}
                 <button
                   type="submit"
                   className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition-colors text-sm"

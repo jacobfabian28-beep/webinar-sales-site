@@ -1,26 +1,37 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 export default function EmailCapture() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!name.trim() || !email.trim()) return;
+
+    const { error: sbError } = await supabase
+      .from("email_signups")
+      .insert([{ name: name.trim(), email: email.trim() }]);
+
+    if (sbError) {
+      setError("Something went wrong. Please try again.");
+      return;
+    }
+
     setSubmitted(true);
   }
 
   if (submitted) {
     return (
       <div className="bg-orange-50 border border-orange-200 rounded-2xl p-8 text-center max-w-md mx-auto">
-        <div className="text-5xl mb-4">🎉</div>
         <h3 className="text-xl font-bold text-orange-800 mb-2">You&apos;re on the list!</h3>
-        <p className="text-orange-700">
-          Thanks, <strong>{name}</strong>! We&apos;ll send webinar details and exclusive tips to{" "}
-          <strong>{email}</strong>.
+        <p className="text-orange-700 text-sm">
+          Thanks, <strong>{name}</strong>! We&apos;ll send webinar details and
+          exclusive tips to <strong>{email}</strong>.
         </p>
       </div>
     );
@@ -52,6 +63,7 @@ export default function EmailCapture() {
           required
           className="border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 text-slate-900"
         />
+        {error && <p className="text-red-500 text-xs">{error}</p>}
         <button
           type="submit"
           className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition-colors text-sm"
