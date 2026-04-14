@@ -22,6 +22,12 @@ export default function EmailCapture() {
       return;
     }
 
+    await fetch("/api/notify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "signup", name: name.trim(), email: email.trim() }),
+    });
+
     setSubmitted(true);
   }
 

@@ -30,6 +30,18 @@ export default function ContactPage() {
       return;
     }
 
+    await fetch("/api/notify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type: "contact",
+        name: form.name.trim(),
+        email: form.email.trim(),
+        business: form.business.trim(),
+        message: form.message.trim(),
+      }),
+    });
+
     setSubmitted(true);
   }
 
